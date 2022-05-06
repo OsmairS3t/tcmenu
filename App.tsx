@@ -1,7 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from 'styled-components';
+import theme from './src/global/styles/theme';
+import AppLoading from 'expo-app-loading';
+import { AppRoutes } from './src/routes/app.routes';
 import {
   useFonts,
   Mulish_200ExtraLight,
@@ -9,10 +12,8 @@ import {
   Mulish_400Regular,
   Mulish_700Bold
 } from '@expo-google-fonts/mulish';
-import { NavigationContainer } from '@react-navigation/native';
-import theme from './src/global/styles/theme';
-import AppLoading from 'expo-app-loading';
-import { AppRoutes } from './src/routes/app.routes';
+
+import { Dashboard } from './src/screens/dashboard';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -30,7 +31,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <StatusBar style="auto" />
       <NavigationContainer>
-        <AppRoutes />
+        <Dashboard />
       </NavigationContainer>
     </ThemeProvider>
   );

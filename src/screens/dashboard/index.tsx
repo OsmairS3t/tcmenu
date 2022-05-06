@@ -1,17 +1,23 @@
 import React from 'react';
+import { ButtonSend } from '../../components/form/button';
 
 import {
   Container,
   Header,
-  Title
-} './styles';
+  Logo,
+  Content
+} from './styles';
+
+//const logo = '../../assets/logotipo.png';
 
 export function Dashboard() {
   return (
     <Container>
-      <Header>
-        <Title>TC Menu</Title>
-      </Header>
+      <Logo source={require('../../assets/logotipo.png')} />
+      <Header />
+      <Content>
+        <ButtonSend title='Entrar' onPress={()=>{}} />
+      </Content>
     </Container>
   )
 }
