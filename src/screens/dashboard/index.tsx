@@ -9,12 +9,13 @@ import {
   Content
 } from './styles';
 
+import { AppRoutes } from '../../routes/app.routes';
 //const logo = '../../assets/logotipo.png';
 
 export function Dashboard() {
   const navigation = useNavigation();
   function goAhead() {
-    //navigation.navigate()
+    //navigation.navigate(AppRoutes);
   }
   
   return (

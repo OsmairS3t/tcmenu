@@ -1,17 +1,14 @@
 import React from "react";
-
+import { Header } from "../../components/header";
 import {
     Container,
-    Header,
     Title
 } from './styles';
 
 export function Menu() {
     return (
         <Container>
-            <Header>
-                <Title>Menu</Title>
-            </Header>
+            <Header title="Menu" />
         </Container>
     )
 }
