@@ -1,7 +1,8 @@
+import { TouchableOpacity } from 'react-native';
 import { RFValue, RFPercentage } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   width: ${RFPercentage(45)}px;
   height: ${RFPercentage(8)}px;
   padding: ${RFValue(10)}px;
