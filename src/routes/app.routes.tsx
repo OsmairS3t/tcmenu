@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Platform } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -13,6 +12,7 @@ const { Navigator, Screen } = createBottomTabNavigator();
 
 export function AppRoutes() {
   const theme = useTheme();
+  
   return (
     <Navigator
       screenOptions={{
@@ -27,7 +27,7 @@ export function AppRoutes() {
           paddingVertical: Platform.OS === 'ios' ? 20 : 0,
         }
       }}
-    >
+     >
       <Screen
         name="Menu"
         component={Menu}

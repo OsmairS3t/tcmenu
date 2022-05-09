@@ -20,7 +20,7 @@ export const Title = styled.Text`
 export const Exit = styled.TouchableOpacity`
     position: absolute;
     bottom: 20px;
-    left: 20px;
+    right: 20px;
     background-color: transparent;
 `;
 

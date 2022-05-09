@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
@@ -19,8 +20,7 @@ import {
   Mulish_700Bold
 } from '@expo-google-fonts/mulish';
 
-import { Dashboard } from './src/screens/dashboard';
-import { AppRoutes } from './src/routes/app.routes';
+import { Router } from './src/routes/index';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -37,9 +37,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar style="light" backgroundColor="transparent" />
-      <NavigationContainer>
-        <Dashboard />
-      </NavigationContainer>
+      <Router />
     </ThemeProvider>
   );
 }
