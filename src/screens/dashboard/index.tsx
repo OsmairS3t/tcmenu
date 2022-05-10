@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { ButtonSend } from '../../components/form/button';
+import { ButtonSend } from '../../components/Form/Button';
 
 import {
   Container,

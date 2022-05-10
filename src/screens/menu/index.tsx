@@ -1,29 +1,32 @@
 import React, { useState } from "react";
-import { TouchableOpacity, Modal, FlatList } from "react-native";
+import { TouchableOpacity, Modal, FlatList, View } from "react-native";
 import { Header } from "../../components/header";
 import { RegisterMenu } from './register'
 
 
 import {
     Container,
+    TitlePage,
+    RegisterButton,
     TitleButton,
     HeaderPage,
-    Texto
+    ListMenu,
+    TextListMenu 
 } from './styles';
 
 interface MenuProps {
-    id: number;
+    id: string;
     name: string;
 }
 
 export function Menu() {
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const [valores, setValores] = useState<MenuProps[]>([
-        {id: 1, name: 'Creme bulet'},
-        {id: 2, name: 'Lyon'},
-        {id: 3, name: 'Batata Frita'},
-        {id: 4, name: 'Crepe Salgado'}
-    ]);
+    const valores = [
+        {id: '1', name: 'Creme bulet'},
+        {id: '2', name: 'Lyon'},
+        {id: '3', name: 'Batata Frita'},
+        {id: '4', name: 'Crepe Salgado'}
+    ]
     
     function OpenRegisterMenu() {
         setIsOpenModal(true);
@@ -37,18 +40,23 @@ export function Menu() {
         <Container>
             <Header title="Menu" />
             <HeaderPage>
-                <TouchableOpacity onPress={OpenRegisterMenu}>
+                <TitlePage>Itens do menu:</TitlePage>
+                <RegisterButton onPress={OpenRegisterMenu}>
                     <TitleButton>Cadastrar</TitleButton>
-                </TouchableOpacity>
+                </RegisterButton>
             </HeaderPage>
+            
             <FlatList 
                 data={valores}
-                style={{ flex: 1, width: '100%' }}
-                keyExtractor={(item) => item.id}
-                renderItem={({item}) => (
-                    <Texto>{item.name}</Texto>
+                style={{ paddingHorizontal:20, width: '100%' }}
+                keyExtractor={item => item.id}
+                renderItem={({item, index}) => (
+                    <ListMenu index={index}>
+                        <TextListMenu>{item.name}</TextListMenu>
+                    </ListMenu>
                 )}
             />
+
             <Modal visible={isOpenModal}>
                 <RegisterMenu
                     isOpen={isOpenModal}
