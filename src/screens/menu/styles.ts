@@ -14,6 +14,7 @@ export const HeaderPage = styled.View`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin: 10px 0px;
 `;
 
 export const TitlePage = styled.Text`
@@ -22,7 +23,7 @@ export const TitlePage = styled.Text`
 `;
 
 export const RegisterButton = styled.TouchableOpacity`
-    padding: 5px ${RFValue(10)}px;
+    padding: 0px;
 `;
 
 export const TitleButton = styled.Text`
