@@ -2,14 +2,10 @@ import React, { useState } from "react";
 import { TouchableOpacity, Modal, FlatList, View } from "react-native";
 import { Header } from "../../components/header";
 import { RegisterMenu } from './register'
-
+import { HeaderPage } from "../../components/headerPage";
 
 import {
     Container,
-    TitlePage,
-    RegisterButton,
-    TitleButton,
-    HeaderPage,
     ListMenu,
     TextListMenu 
 } from './styles';
@@ -39,12 +35,11 @@ export function Menu() {
     return (
         <Container>
             <Header title="Menu" />
-            <HeaderPage>
-                <TitlePage>Itens do menu:</TitlePage>
-                <RegisterButton onPress={OpenRegisterMenu}>
-                    <TitleButton>Cadastrar</TitleButton>
-                </RegisterButton>
-            </HeaderPage>
+            <HeaderPage 
+                titlePage="Itens do menu:" 
+                titleButton="Cadastrar"
+                onPress={OpenRegisterMenu} 
+            />
             
             <FlatList 
                 data={valores}

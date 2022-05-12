@@ -1,5 +1,6 @@
-import React from "react";
-import { TouchableOpacity, TouchableWithoutFeedback, Keyboard } from "react-native";
+import React, { useState } from "react";
+import { TouchableWithoutFeedback, Keyboard } from "react-native";
+import * as ImagePicker from 'expo-image-picker';
 import { Header } from "../../../components/header";
 
 import { useForm } from 'react-hook-form';
@@ -11,20 +12,15 @@ import { ButtonSend } from "../../../components/Form/Button";
 
 import {
     Container,
-    TitleButton,
-    HeaderPage,
-    TitlePage,
-    Icon,
     Form,
-    Field
+    Field,
+    Upload, 
+    PickImageButton
 } from './styles';
-import { ImageView } from "../../../components/Form/ImageView";
+import { Photo } from "../../../components/Form/Photo";
+import { HeaderPage } from "../../../components/headerPage";
 
-type Ingredient = {
-    id: string;
-    productname: string;
-    description: string;
-}
+import { Ingredient } from '../../../components/Form/SelectIngredient'
 
 interface MenuProps {
     name: string;
@@ -46,27 +42,40 @@ const schema = Yup.object().shape({
 })
 
 export function RegisterMenu({ isOpen, CloseModal }: Props) {
-    const {
-        handleSubmit,
-        control,
-        formState: { errors } } = useForm<MenuProps>({
+    const [image, setImage] = useState('');
+    const { handleSubmit, control, formState: { errors } 
+        } = useForm<MenuProps>({
             resolver: yupResolver(schema)
         });
 
     function handleSubmitRegisterMenu(menu: MenuProps) {
         console.log(menu);
     }
+
+    async function handlePicherImage() {
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status === 'granted') {
+            const result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Images,
+                aspect: [4,4]
+            });
+            if(!result.cancelled) {
+                setImage(result.uri);
+            }
+        }
+    }
+
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <Container>
                 <Header title="Menu" />
 
-                <HeaderPage>
-                    <TitlePage>Cadastrar itens do Menu:</TitlePage>
-                    <TouchableOpacity onPress={CloseModal}>
-                        <TitleButton><Icon name='corner-up-left' size={20} /></TitleButton>
-                    </TouchableOpacity>
-                </HeaderPage>
+                <HeaderPage 
+                    titlePage="Cadastrar itens do Menu:"
+                    iconButton="corner-up-left"
+                    onPress={CloseModal}
+                />
+                
                 <Form>
                     <Field>
                         <InputForm
@@ -84,7 +93,7 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
                             label="Valor:"
                             name="price"
                             control={control}
-                            placeholder="35.00"
+                            placeholder="0.00"
                             keyboardType="numeric"
                             autoCorrect={false}
                             error={errors.price && errors.price.message}
@@ -95,7 +104,7 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
                             label="Tempo de preparo:"
                             name="timeprepare"
                             control={control}
-                            placeholder="20 minutos"
+                            placeholder="0 minutos"
                             autoCapitalize="characters"
                             autoCorrect={false}
                             error={errors.timeprepare && errors.timeprepare.message}
@@ -106,7 +115,7 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
                             label="Quant. Pessoas:"
                             name="peopleamount"
                             control={control}
-                            placeholder="2 pessoas adultas"
+                            placeholder="0 pessoas adultas"
                             autoCapitalize="characters"
                             autoCorrect={false}
                         />
@@ -122,9 +131,13 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
                         />
                     </Field>
                     <Field>
-                    <ImageView
-                        label="Imagem:"
-                        />
+                        <Upload>
+                            <Photo uri={image} />
+                            <PickImageButton 
+                                title="Up &uarr;" 
+                                onPress={handlePicherImage} 
+                            />
+                        </Upload>
                     </Field>
                     <ButtonSend title="Cadastrar" onPress={handleSubmit(handleSubmitRegisterMenu)} />
                 </Form>

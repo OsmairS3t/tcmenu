@@ -1,29 +1,11 @@
 import styled from 'styled-components/native';
 import { Feather } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { ButtonSend } from '../../../components/Form/Button';
 
 export const Container = styled.ScrollView``;
 
 export const TitleButton = styled.Text``;
-
-export const HeaderPage = styled.View`
-    width: 100%;
-    padding: 5px 20px;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin: 10px 0px;
-`;
-
-export const TitlePage = styled<any>(Feather)`
-    font-size: ${RFValue(18)}px;
-    font-family: ${({ theme }) => theme.fonts.bold};
-`;
-
-export const Icon = styled<any>(Feather)`
-    width: 20px;
-    height: 20px;
-`;
 
 export const Form = styled.View`
     width: 100%;
@@ -33,3 +15,17 @@ export const Form = styled.View`
 
 export const Field = styled.View`
 `;
+
+export const Upload = styled.View`
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0px;
+`;
+
+export const PickImageButton = styled(ButtonSend)`
+    max-width: 90px;
+    margin-left: 32px;
+`;
+
