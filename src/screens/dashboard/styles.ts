@@ -25,7 +25,7 @@ export const Logo = styled(Image)`
 
 export const Content = styled.View`
   background-color: ${({ theme }) => theme.colors.background};
-  width: 100%;
+  width: 80%;
   height: ${RFValue(490)}px;
   padding-bottom: ${RFValue(50)}px;
   justify-content: flex-end;

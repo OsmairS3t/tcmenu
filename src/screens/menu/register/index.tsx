@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableWithoutFeedback, Keyboard } from "react-native";
+import { TouchableWithoutFeedback, Keyboard, Modal } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import { Header } from "../../../components/header";
 
@@ -13,6 +13,7 @@ import { ButtonSend } from "../../../components/Form/Button";
 import {
     Container,
     Form,
+    Fields,
     Field,
     Upload, 
     PickImageButton
@@ -20,14 +21,15 @@ import {
 import { Photo } from "../../../components/Form/Photo";
 import { HeaderPage } from "../../../components/headerPage";
 
-import { Ingredient } from '../../../components/Form/SelectIngredient'
+import { Ingredient } from '../../../screens/menu/Ingredient'
+import { IngredientProps } from '../Ingredient'
 
 interface MenuProps {
     name: string;
     price: number;
     timeprepare: string;
     peopleamount: number;
-    ingredients: Ingredient[];
+    ingredients: IngredientProps[];
 }
 
 interface Props {
@@ -42,6 +44,7 @@ const schema = Yup.object().shape({
 })
 
 export function RegisterMenu({ isOpen, CloseModal }: Props) {
+    const [isOpenModalAddIngredient, setIsOpenModalAddIngredient] = useState(false);
     const [image, setImage] = useState('');
     const { handleSubmit, control, formState: { errors } 
         } = useForm<MenuProps>({
@@ -63,6 +66,14 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
                 setImage(result.uri);
             }
         }
+    }
+
+    function handleOpenModalAddIngredient() {
+        setIsOpenModalAddIngredient(true);
+    }
+
+    function handleCloseModalAddIngredient() {
+        setIsOpenModalAddIngredient(false);
     }
 
     return (
@@ -120,16 +131,21 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
                             autoCorrect={false}
                         />
                     </Field>
-                    <Field>
-                        <InputForm
-                            label="Ingredientes:"
-                            name="ingredients"
-                            control={control}
-                            placeholder="..."
-                            autoCapitalize="characters"
-                            autoCorrect={false}
-                        />
-                    </Field>
+                    <Fields>
+                        <Field size={290}>
+                            <InputForm
+                                label="Ingredientes:"
+                                name="ingredients"
+                                control={control}
+                                placeholder="..."
+                                autoCapitalize="characters"
+                                autoCorrect={false}
+                                />
+                        </Field>
+                        <Field size={70}>
+                            <ButtonSend title="+" onPress={handleOpenModalAddIngredient} />
+                        </Field>
+                    </Fields>
                     <Field>
                         <Upload>
                             <Photo uri={image} />
@@ -141,6 +157,14 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
                     </Field>
                     <ButtonSend title="Cadastrar" onPress={handleSubmit(handleSubmitRegisterMenu)} />
                 </Form>
+
+                <Modal visible={isOpenModalAddIngredient}>
+                    <Ingredient 
+                        isOpen={isOpenModalAddIngredient}
+                        CloseModal={handleCloseModalAddIngredient}
+                        
+                    />
+                </Modal>
             </Container>
         </TouchableWithoutFeedback>
     )

@@ -3,6 +3,10 @@ import { Feather } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { ButtonSend } from '../../../components/Form/Button';
 
+interface FieldProps {
+    size?: number;
+}
+
 export const Container = styled.ScrollView``;
 
 export const TitleButton = styled.Text``;
@@ -13,7 +17,15 @@ export const Form = styled.View`
     margin-bottom: ${RFValue(20)}px;
 `;
 
-export const Field = styled.View`
+export const Fields = styled.View<FieldProps>`
+    width: 100%;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+`;
+
+export const Field = styled.View<FieldProps>`
+    width: ${({size})=> size ? size : '370'}px;
 `;
 
 export const Upload = styled.View`
