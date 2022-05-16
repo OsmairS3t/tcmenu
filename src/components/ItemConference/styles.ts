@@ -12,10 +12,13 @@ export const Container = styled.View<Props>`
     padding: 0px 20px;
     height: ${RFValue(80)}px;
     padding: 10px;
+    border-bottom-width: 2px;
+    border-style: solid;
+    border-color: ${({ theme }) => theme.colors.background};
     background-color: ${({ theme, amountNecessary, amountStock }) => 
         (amountStock >= amountNecessary) ? 
-          theme.colors.foreGroundPrimary : 
-          theme.colors.foreGroundSecondary};
+          theme.colors.backgroundSuccess : 
+          theme.colors.backgroundAttention};
 `;
 
 export const Title = styled.Text`

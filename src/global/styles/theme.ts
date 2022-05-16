@@ -10,6 +10,8 @@ export default {
     title: '#1E1E24',
     text: '#616161',
     foreGroundSecondary: '#C36B65',
+    backgroundSuccess: '#D8E5ED',
+    backgroundAttention: '#E8BCBA',
     success: '#0A9818',
   },
 

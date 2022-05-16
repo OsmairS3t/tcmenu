@@ -9,8 +9,9 @@ import theme from './src/global/styles/theme';
 //import * as SplashScreen from 'expo-splash-screen';
 //import * as Font from 'expo-font';
 //import Entypo from '@expo/vector-icons/Entypo';
-
+//expo doctor --fix-dependencies
 //https://docs.expo.dev/versions/latest/sdk/splash-screen/
+// cd android && gradlew signinReport não funcionou
 //import AppLoading from 'expo-app-loading';
 import {
   useFonts,

@@ -18,7 +18,9 @@ interface Props {
 export interface IngredientProps {
     name: string;
     price: string;
+    unit: string;
     amount: number;
+    amountnecessary: number;
 }
 
 const schema = Yup.object().shape({
@@ -64,10 +66,25 @@ export function Ingredient({ isOpen, CloseModal }: Props) {
                 </Field>
                 <Field>
                     <InputForm
-                        label='Quantidade:'
+                        label='Unidade:'
+                        name="unit"
+                        control={control}
+                    />
+                </Field>
+                <Field>
+                    <InputForm
+                        label='Quantidade estoque:'
                         name="amount"
                         control={control}
                         error={errors.amount && errors.amount.message}
+                        keyboardType='numeric'
+                    />
+                </Field>
+                <Field>
+                    <InputForm
+                        label='Quant. Ideal:'
+                        name="amountnecessary"
+                        control={control}
                         keyboardType='numeric'
                     />
                 </Field>

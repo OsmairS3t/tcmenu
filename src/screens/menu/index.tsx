@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { TouchableOpacity, Modal, FlatList, View } from "react-native";
+import { Modal, FlatList } from "react-native";
 import { Header } from "../../components/Header";
 import { RegisterMenu } from './register'
 import { HeaderPage } from "../../components/HeaderPage";
+
+import { menu } from '../../utils/data';
 
 import {
     Container,
@@ -42,7 +44,7 @@ export function Menu() {
             />
             
             <FlatList 
-                data={valores}
+                data={menu}
                 style={{ paddingHorizontal:20, width: '100%' }}
                 keyExtractor={item => item.id}
                 renderItem={({item, index}) => (
