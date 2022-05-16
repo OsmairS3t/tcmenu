@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { TouchableWithoutFeedback, Keyboard, Modal } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
-import { Header } from "../../../components/header";
+import { Header } from "../../../components/Header";
+import { HeaderPage } from "../../../components/HeaderPage";
 
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
@@ -19,7 +20,6 @@ import {
     PickImageButton
 } from './styles';
 import { Photo } from "../../../components/Form/Photo";
-import { HeaderPage } from "../../../components/headerPage";
 
 import { Ingredient } from '../../../screens/menu/Ingredient'
 import { IngredientProps } from '../Ingredient'

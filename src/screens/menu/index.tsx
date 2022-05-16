@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { TouchableOpacity, Modal, FlatList, View } from "react-native";
-import { Header } from "../../components/header";
+import { Header } from "../../components/Header";
 import { RegisterMenu } from './register'
-import { HeaderPage } from "../../components/headerPage";
+import { HeaderPage } from "../../components/HeaderPage";
 
 import {
     Container,

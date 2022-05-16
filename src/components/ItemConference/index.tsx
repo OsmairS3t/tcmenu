@@ -1,34 +1,45 @@
-import React from 'react';
-import {Text} from 'react-native';
-import { Input } from '../Form/Input';
+import React, { useState } from 'react';
 
 import {
     Container,
-    Information,
     Title,
     DescriptionAmount,
     GroupButtonStatus,
-    ButtonStatus,
-    TextButtonStatus,
     ButtonsAction,
-    Buttons
+    Buttons,
+    IconButtonPlus,
+    IconButtonLess,
 } from './styles';
 
-export function ItemConference() {
+interface Props{
+    amountNecessary: number;
+    amountStock: number;
+}
+
+export function ItemConference({amountNecessary, amountStock}: Props) {
+    const [amountS, setAmountS] = useState(amountStock);
+
+    function handleSetPlusAmountStock(valueAmount: number) {
+        setAmountS(++valueAmount);
+    }
+
+    function handleSetMinusAmountStock(valueAmount: number) {
+        setAmountS(--valueAmount);
+    }
+
     return (
-        <Container>
-            <Information>
-                <Title>Batata Frita</Title>
-                <DescriptionAmount>Quantidade ideal: 20</DescriptionAmount>
-            </Information>
+        <Container amountNecessary={amountNecessary} amountStock={amountS}>
+            <Title>Batata Frita</Title>
             <GroupButtonStatus>
-                <ButtonStatus>
-                    <TextButtonStatus>Insuficiente</TextButtonStatus>
-                </ButtonStatus>
+                <DescriptionAmount>Ideal: { amountNecessary }</DescriptionAmount>
                 <ButtonsAction>
-                    <Buttons />
-                    <Buttons />
-                    <Buttons />
+                    <DescriptionAmount>Total: { amountS }</DescriptionAmount>
+                    <Buttons onPress={() => handleSetPlusAmountStock(amountS)}>
+                        <IconButtonPlus name='plus-square' size={30} />
+                    </Buttons>
+                    <Buttons onPress={() => handleSetMinusAmountStock(amountS)}>
+                        <IconButtonLess name='minus-square' size={30} />
+                    </Buttons>
                 </ButtonsAction>
             </GroupButtonStatus>
         </Container>

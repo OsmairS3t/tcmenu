@@ -1,46 +1,38 @@
-import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
+import { RFValue } from "react-native-responsive-fontsize";
+import { Feather } from '@expo/vector-icons';
 
-export const Container = styled.View`
-    flex-direction: row;
+
+interface Props{
+    amountNecessary: number;
+    amountStock: number;
+}
+
+export const Container = styled.View<Props>`
     padding: 0px 20px;
     height: ${RFValue(80)}px;
     padding: 10px;
-    background-color: ${({ theme }) => theme.colors.foreGroundPrimary};
-`;
-
-export const Information = styled.View`
-    flex: 1;
-    justify-content: space-around;
+    background-color: ${({ theme, amountNecessary, amountStock }) => 
+        (amountStock >= amountNecessary) ? 
+          theme.colors.foreGroundPrimary : 
+          theme.colors.foreGroundSecondary};
 `;
 
 export const Title = styled.Text`
+    width: 100%;
     font-size: ${RFValue(16)}px;
     font-family: ${({theme})=>theme.fonts.regular};
-    `;
+`;
     
-export const DescriptionAmount = styled.Text`
-    font-size: ${RFValue(12)}px;
-    font-family: ${({theme})=>theme.fonts.regular};
-`;
-
 export const GroupButtonStatus = styled.View`
+    flex-direction: row;
     justify-content: space-between;
-`;
-
-export const ButtonStatus = styled.View`
-    width: 120px;
-    height: ${RFValue(30)}px;
-    padding: 5px;
-    border-radius: 8px;
-    background-color: ${({theme})=>theme.colors.secondary};
     align-items: center;
-    justify-content: center;
 `;
 
-export const TextButtonStatus = styled.Text`
-    color: ${({ theme }) => theme.colors.background};
-    font-family: ${({ theme }) => theme.fonts.regular};
+export const DescriptionAmount = styled.Text`
+    font-size: ${RFValue(14)}px;
+    font-family: ${({theme})=>theme.fonts.regular};
 `;
 
 export const ButtonsAction = styled.View`
@@ -49,9 +41,23 @@ export const ButtonsAction = styled.View`
     align-items: center;
 `;
 
-export const Buttons = styled.View`
-    width: 30px;
-    height: 30px;
+export const Buttons = styled.TouchableOpacity`
+    width: 35px;
+    height: 35px;
+    margin: 5px;
     border:1px solid gray;
-    border-radius: 2px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-left: ${RFValue(15)}px;
+    background-color: ${({ theme }) => theme.colors.primary};
 `;
+
+export const IconButtonPlus = styled<any>(Feather)`
+    color: ${({ theme }) => theme.colors.background};
+`;
+
+export const IconButtonLess = styled<any>(Feather)`
+    color: ${({ theme }) => theme.colors.background};
+`;
+

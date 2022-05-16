@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeaderPage } from '../../../components/headerPage';
+import { HeaderPage } from '../../../components/HeaderPage';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -8,7 +8,7 @@ import { Container } from './styles';
 import { Field, Form } from '../register/styles';
 import { InputForm } from '../../../components/Form/InputForm';
 import { ButtonSend } from '../../../components/Form/Button';
-import { Header } from '../../../components/header';
+import { Header } from '../../../components/Header';
 
 interface Props {
     isOpen: boolean;
