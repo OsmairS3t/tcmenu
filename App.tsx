@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ThemeProvider } from 'styled-components';
 import theme from './src/global/styles/theme';
+import { AuthProvider } from './src/hooks/auth'
 
 //import * as SplashScreen from 'expo-splash-screen';
 //import * as Font from 'expo-font';
@@ -38,7 +39,9 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar style="light" backgroundColor="transparent" />
-      <Router />
+      <AuthProvider>
+        <Router />
+      </AuthProvider>
     </ThemeProvider>
   );
 }
