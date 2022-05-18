@@ -16,13 +16,13 @@ export function Header({title}: Props) {
     const navigation = useNavigation();
 
     function exit() {
-        navigation.navigate('approutes');
+        navigation.navigate('dashboard');
     }
 
     return (
         <Container>
             <Title>{title}</Title>
-            <Exit onPress={()=>exit}>
+            <Exit onPress={exit}>
                 <Icon name="x" size={25} />
             </Exit>
         </Container>

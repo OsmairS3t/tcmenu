@@ -15,6 +15,7 @@ const AuthContext = createContext({} as IAuthContextData);
 
 function AuthProvider({children}: AuthProviderProps) {
     const user = {id:'1', name:'Osmair', email:'osmair@eu.com'}
+    
     return (
         <AuthContext.Provider value={{user}}>
             { children }

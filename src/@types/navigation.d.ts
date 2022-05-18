@@ -1,12 +1,13 @@
-export type MenuNavitagionProps = {
+export type MenuNavigationProps = {
     tp?: string;
 }
 
 export declare global {
     namespace ReactNavigation {
         interface RootParamList {
+            dashboard: undefined;
             approutes: undefined;
-            menu: MenuNavitagionProps;
+            menu: MenuNavigationProps;
             registermenu: undefined;
             conferencemenu: undefined;
             buylist: undefined;

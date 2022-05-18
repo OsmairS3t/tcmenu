@@ -14,9 +14,7 @@ export function Router() {
     
     return (
         <NavigationContainer>
-            <Navigator
-                screenOptions={{headerShown: false}}
-            >
+            <Navigator screenOptions={{headerShown: false}}>
                 <Screen name='dashboard' component={Dashboard} />
                 <Screen name='approutes' component={AppRoutes} />
             </Navigator>
