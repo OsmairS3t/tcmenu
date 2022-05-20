@@ -12,11 +12,13 @@ import {
 } from './styles';
 
 interface Props{
+    itemName: string;
     amountNecessary: number;
     amountStock: number;
+    onPress: () => void;
 }
 
-export function ItemConference({amountNecessary, amountStock}: Props) {
+export function ItemConference({itemName, amountNecessary, amountStock, onPress}: Props) {
     const [amountS, setAmountS] = useState(amountStock);
 
     function handleSetPlusAmountStock(valueAmount: number) {
@@ -28,17 +30,17 @@ export function ItemConference({amountNecessary, amountStock}: Props) {
     }
 
     return (
-        <Container amountNecessary={amountNecessary} amountStock={amountS}>
-            <Title>Batata Frita</Title>
+        <Container amountNecessary={amountNecessary} amountStock={amountS} onPress={onPress}>
+            <Title>{itemName}</Title>
             <GroupButtonStatus>
                 <DescriptionAmount>Ideal: { amountNecessary }</DescriptionAmount>
                 <ButtonsAction>
                     <DescriptionAmount>Total: { amountS }</DescriptionAmount>
-                    <Buttons onPress={() => handleSetPlusAmountStock(amountS)}>
-                        <IconButtonPlus name='plus-square' size={30} />
-                    </Buttons>
                     <Buttons onPress={() => handleSetMinusAmountStock(amountS)}>
                         <IconButtonLess name='minus-square' size={30} />
+                    </Buttons>
+                    <Buttons onPress={() => handleSetPlusAmountStock(amountS)}>
+                        <IconButtonPlus name='plus-square' size={30} />
                     </Buttons>
                 </ButtonsAction>
             </GroupButtonStatus>

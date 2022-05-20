@@ -41,10 +41,10 @@ export const menu = [
 ]
 
 export const ingredient = [
-    {id: 'a', name: 'Farinha de Trigo', unit: 'quilos',price: 5, amount: 10, amountnecessary: 10},
-    {id: 'b', name: 'Leite', price: 5, unit: 'litros',amount: 10, amountnecessary: 10},
-    {id: 'c', name: 'Ovos', price: 5, unit: 'unidades',amount: 10, amountnecessary: 10},
-    {id: 'd', name: 'Óleo', price: 10, unit: 'litros',amount: 10, amountnecessary: 20},
-    {id: 'e', name: 'Batata', price: 120, unit: 'kg',amount: 1, amountnecessary: 1},
+    {id: 'a', name: 'Farinha de Trigo', unit: 'quilos',price: 5, amountstock: 10, amountnecessary: 10},
+    {id: 'b', name: 'Leite', price: 5, unit: 'litros',amountstock: 10, amountnecessary: 10},
+    {id: 'c', name: 'Ovos', price: 5, unit: 'unidades',amountstock: 10, amountnecessary: 10},
+    {id: 'd', name: 'Óleo', price: 10, unit: 'litros',amountstock: 10, amountnecessary: 20},
+    {id: 'e', name: 'Batata', price: 120, unit: 'kg',amountstock: 2, amountnecessary: 1},
 ]
 

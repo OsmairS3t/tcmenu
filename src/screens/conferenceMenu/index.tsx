@@ -15,6 +15,7 @@ import {
 
 export function ConferenceMenu() {
     const [isOpen, setIsOpen] = useState(false);
+    const [idMenu, setIdMenu] = useState("");
 
     function handleOpenModalConfig() {
         setIsOpen(true);
@@ -22,6 +23,11 @@ export function ConferenceMenu() {
 
     function handleCloseModalConfig() {
         setIsOpen(false);
+    }
+
+    function handleEditItem(id: string){
+        setIdMenu(id);
+        setIsOpen(true);
     }
 
     return (
@@ -40,14 +46,16 @@ export function ConferenceMenu() {
                 keyExtractor={item => item.id}
                 renderItem={({item, index}) => (
                     <ItemConference 
-                        amountNecessary={item.amount}
+                        itemName={item.name}
+                        amountNecessary={item.amountstock}
                         amountStock={item.amountnecessary}
+                        onPress={() => handleEditItem(item.id)}
                     />
                 )}
             />
             
             <Modal visible={isOpen}>
-                <ConfigMenu CloseModal={handleCloseModalConfig} />
+                <ConfigMenu idMenu={idMenu} CloseModal={handleCloseModalConfig} />
             </Modal>
         </Container>
     )

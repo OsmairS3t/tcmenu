@@ -8,7 +8,7 @@ interface Props{
     amountStock: number;
 }
 
-export const Container = styled.View<Props>`
+export const Container = styled.TouchableOpacity<Props>`
     padding: 0px 20px;
     height: ${RFValue(80)}px;
     padding: 10px;

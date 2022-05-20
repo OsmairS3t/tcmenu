@@ -7,6 +7,8 @@ import { InputForm } from '../../../components/Form/InputForm';
 import { Header } from '../../../components/Header';
 import { HeaderPage } from '../../../components/HeaderPage';
 
+import { ingredient } from '../../../utils/data'
+
 import {
     Container,
     Form,
@@ -26,11 +28,13 @@ interface ConfigProps{
 
 interface Props {
     CloseModal: () => void;
+    idMenu: string;
 }
 
-export function ConfigMenu({CloseModal}: Props) {
+export function ConfigMenu({CloseModal, idMenu}: Props) {
     const { handleSubmit, control, formState: {errors}, reset
           } = useForm<ConfigProps>({resolver: yupResolver(schema)});
+    const itemMenu = ingredient.find(item => item.id === idMenu);
 
     function handleSubmitConfigMenu(data: ConfigProps) {
         console.log(data);
@@ -44,7 +48,7 @@ export function ConfigMenu({CloseModal}: Props) {
             <Form>
                 <Fields>
                     <Field size={250}>
-                        <TextLabel>Batata Frita</TextLabel>
+                        <TextLabel>{itemMenu?.name}</TextLabel>
                     </Field>
                     <Field size={100}>
                         <InputForm 

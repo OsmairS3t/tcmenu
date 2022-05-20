@@ -10,7 +10,7 @@ import { AppRoutes } from '../routes/app.routes';
 
 export function Router() {
     const {user} = useAuth();
-    console.log(user);
+    //console.log(user);
     
     return (
         <NavigationContainer>
