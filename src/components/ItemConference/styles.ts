@@ -8,7 +8,7 @@ interface Props{
     amountStock: number;
 }
 
-export const Container = styled.TouchableOpacity<Props>`
+export const Container = styled.View<Props>`
     padding: 0px 20px;
     height: ${RFValue(80)}px;
     padding: 10px;
@@ -33,9 +33,12 @@ export const GroupButtonStatus = styled.View`
     align-items: center;
 `;
 
+export const ButtonIdeal = styled.TouchableOpacity``;
+
 export const DescriptionAmount = styled.Text`
     font-size: ${RFValue(14)}px;
     font-family: ${({theme})=>theme.fonts.regular};
+    text-decoration: underline;
 `;
 
 export const ButtonsAction = styled.View`

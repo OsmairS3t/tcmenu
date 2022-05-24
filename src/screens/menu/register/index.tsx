@@ -23,6 +23,7 @@ import { Photo } from "../../../components/Form/Photo";
 
 import { Ingredient } from '../../../screens/menu/Ingredient'
 import { IngredientProps } from '../Ingredient'
+import { SelectIngredient } from "../../../components/Form/SelectIngredient";
 
 interface MenuProps {
     name: string;
@@ -112,10 +113,10 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
                     </Field>
                     <Field>
                         <InputForm
-                            label="Tempo de preparo:"
+                            label="Tempo de preparo(em minutos):"
                             name="timeprepare"
                             control={control}
-                            placeholder="0 minutos"
+                            placeholder="0"
                             autoCapitalize="characters"
                             autoCorrect={false}
                             error={errors.timeprepare && errors.timeprepare.message}
@@ -123,10 +124,10 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
                     </Field>
                     <Field>
                         <InputForm
-                            label="Quant. Pessoas:"
+                            label="Quantidade de Pessoas:"
                             name="peopleamount"
                             control={control}
-                            placeholder="0 pessoas adultas"
+                            placeholder="0"
                             autoCapitalize="characters"
                             autoCorrect={false}
                         />
@@ -159,11 +160,11 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
                 </Form>
 
                 <Modal visible={isOpenModalAddIngredient}>
-                    <Ingredient 
+                    <SelectIngredient />
+                    {/* <Ingredient 
                         isOpen={isOpenModalAddIngredient}
                         CloseModal={handleCloseModalAddIngredient}
-                        
-                    />
+                    /> */}
                 </Modal>
             </Container>
         </TouchableWithoutFeedback>

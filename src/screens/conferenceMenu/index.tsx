@@ -7,19 +7,11 @@ import { ingredient } from '../../utils/data';
 
 import {
     Container,
-    BlockConfig,
-    ButtonConfig,
-    TextConfig,
-    Config
 } from './styles';
 
 export function ConferenceMenu() {
     const [isOpen, setIsOpen] = useState(false);
     const [idMenu, setIdMenu] = useState("");
-
-    function handleOpenModalConfig() {
-        setIsOpen(true);
-    }
 
     function handleCloseModalConfig() {
         setIsOpen(false);
@@ -33,12 +25,6 @@ export function ConferenceMenu() {
     return (
         <Container>
             <Header title="Conferência do Menu" />
-            <BlockConfig>
-                <ButtonConfig onPress={handleOpenModalConfig}>
-                    <TextConfig>Configurar</TextConfig>
-                    <Config name="settings" size={20} />
-                </ButtonConfig>
-            </BlockConfig>
 
             <FlatList 
                 data={ingredient}

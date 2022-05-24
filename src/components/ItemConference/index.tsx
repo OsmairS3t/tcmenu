@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import {
     Container,
     Title,
+    ButtonIdeal,
     DescriptionAmount,
     GroupButtonStatus,
     ButtonsAction,
@@ -30,10 +31,12 @@ export function ItemConference({itemName, amountNecessary, amountStock, onPress}
     }
 
     return (
-        <Container amountNecessary={amountNecessary} amountStock={amountS} onPress={onPress}>
+        <Container amountNecessary={amountNecessary} amountStock={amountS}>
             <Title>{itemName}</Title>
             <GroupButtonStatus>
-                <DescriptionAmount>Ideal: { amountNecessary }</DescriptionAmount>
+                <ButtonIdeal onPress={onPress}>
+                    <DescriptionAmount>Ideal: { amountNecessary }</DescriptionAmount>
+                </ButtonIdeal>
                 <ButtonsAction>
                     <DescriptionAmount>Total: { amountS }</DescriptionAmount>
                     <Buttons onPress={() => handleSetMinusAmountStock(amountS)}>
