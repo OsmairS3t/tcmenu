@@ -23,8 +23,9 @@ interface Props {
 }
 
 export interface IngredientProps {
+    id: string;
     name: string;
-    price: string;
+    price: number;
     unit: string;
     amountstock: number;
     amountnecessary: number;

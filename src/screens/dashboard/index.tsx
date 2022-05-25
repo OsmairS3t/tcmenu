@@ -16,7 +16,7 @@ export function Dashboard() {
     <Container>
       <Header />
       <Content>
-        <ButtonSend title='Entrar' onPress={()=>navigation.navigate('approutes')} />
+        <ButtonSend width={350} title='Entrar' onPress={()=>navigation.navigate('approutes')} />
       </Content>
       <Logo source={require('../../assets/logotipo.png')} />
     </Container>

@@ -24,6 +24,7 @@ import { Photo } from "../../../components/Form/Photo";
 import { Ingredient } from '../../../screens/menu/Ingredient'
 import { IngredientProps } from '../Ingredient'
 import { SelectIngredient } from "../../../components/Form/SelectIngredient";
+import { SelectIngredientButton } from "../../../components/Form/SelectIngredientButton";
 
 interface MenuProps {
     name: string;
@@ -46,7 +47,11 @@ const schema = Yup.object().shape({
 
 export function RegisterMenu({ isOpen, CloseModal }: Props) {
     const [isOpenModalAddIngredient, setIsOpenModalAddIngredient] = useState(false);
+    const [isOpenModalListIngredient, setIsOpenModalListIngredient] = useState(false);
     const [image, setImage] = useState('');
+    const [ingredient, setIngredient] = useState({
+        id: '', name: '', unit: '',price: 0, amountstock: 0, amountnecessary: 0
+    })
     const { handleSubmit, control, formState: { errors } 
         } = useForm<MenuProps>({
             resolver: yupResolver(schema)
@@ -75,6 +80,14 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
 
     function handleCloseModalAddIngredient() {
         setIsOpenModalAddIngredient(false);
+    }
+
+    function handleOpenModalListIngredient() {
+        setIsOpenModalListIngredient(true);
+    }
+
+    function handleCloseModalListIngredient() {
+        setIsOpenModalListIngredient(false);
     }
 
     return (
@@ -134,14 +147,10 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
                     </Field>
                     <Fields>
                         <Field size={290}>
-                            <InputForm
-                                label="Ingredientes:"
-                                name="ingredients"
-                                control={control}
-                                placeholder="..."
-                                autoCapitalize="characters"
-                                autoCorrect={false}
-                                />
+                            <SelectIngredientButton 
+                                title="Ingredientes..." 
+                                onPress={handleOpenModalListIngredient}
+                            />
                         </Field>
                         <Field size={70}>
                             <ButtonSend title="+" onPress={handleOpenModalAddIngredient} />
@@ -159,12 +168,18 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
                     <ButtonSend title="Cadastrar" onPress={handleSubmit(handleSubmitRegisterMenu)} />
                 </Form>
 
+                <Modal visible={isOpenModalListIngredient}>
+                    <SelectIngredient 
+                        ingredient={ingredient}
+                        setIngredient={setIngredient}
+                        closeListIngredient={handleCloseModalListIngredient}
+                    />
+                </Modal>
                 <Modal visible={isOpenModalAddIngredient}>
-                    <SelectIngredient />
-                    {/* <Ingredient 
+                    <Ingredient 
                         isOpen={isOpenModalAddIngredient}
                         CloseModal={handleCloseModalAddIngredient}
-                    /> */}
+                    />
                 </Modal>
             </Container>
         </TouchableWithoutFeedback>

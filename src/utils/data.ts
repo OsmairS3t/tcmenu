@@ -48,3 +48,53 @@ export const ingredient = [
     {id: 'e', name: 'Batata', price: 120, unit: 'kg',amountstock: 2, amountnecessary: 1},
 ]
 
+/* Embalagem p/ Crepe
+Embalagem p/ sacola
+Embalagem p/ suco
+Massa rodada suficiente pra noite pelo menos uma massa.
+Batatas iniciar com pelo menos 20 porções
+Queijo Ralado (suficiente pra noite, ou completar)
+Filé mignon suficiente pra noite (crepe)
+Filé mignon porcionado entrecot.
+Filé porcionado filé moises
+Cebola caramelizada pra noite
+Mangericao fresco
+Tomate cortado
+Bacon (microondas na hora)
+Velute de aipim (conferir suficiente)
+Carne desfiada (conferir)
+Frango suficiente (conferir)
+Cream cheese
+Catupiry
+Cheedar
+Milho (conferir)
+Calabreza
+Molho Heinz
+Barbecue
+Lombinho (ralado)
+Rúcula lavada
+Acelga
+Camarão
+Antepasto de legumes prós vegetarianos tem que ter no mínimo 5
+Batata para fritar entrecot ver se tem
+Arroz
+Legumes pra camarão internqcional
+ Bife empanado para parmegianno pelo menos 6 porções
+Banana
+Funghi
+Carne moída pro espagheti pelo menos 6 porções.
+Doce de leite
+Goiabada
+Biscoito champanhe
+Morango
+Nutella
+Creme blank
+Creme brule
+Brounie
+Chá verde
+Chá rosele
+Pessego
+Laranja
+Limão
+Bebidas alcoolicas
+ */

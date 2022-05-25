@@ -8,11 +8,12 @@ import {
 
 interface Props extends ButtonProps {
   title: string;
+  width?: number;
 }
 
-export function ButtonSend({title, ...rest}: Props) {
+export function ButtonSend({title, width, ...rest}: Props) {
   return (
-    <Container {...rest}>
+    <Container style={{width: width}} {...rest}>
       <Title>{title}</Title>
     </Container>
   )
