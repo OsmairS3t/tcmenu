@@ -7,7 +7,7 @@ import { InputForm } from '../../../components/Form/InputForm';
 import { Header } from '../../../components/Header';
 import { HeaderPage } from '../../../components/HeaderPage';
 
-import { ingredient } from '../../../utils/data'
+import { listingredient } from '../../../utils/data'
 
 import {
     Container,
@@ -34,7 +34,7 @@ interface Props {
 export function ConfigMenu({CloseModal, idMenu}: Props) {
     const { handleSubmit, control, formState: {errors}, reset
           } = useForm<ConfigProps>({resolver: yupResolver(schema)});
-    const itemMenu = ingredient.find(item => item.id === idMenu);
+    const itemMenu = listingredient.find(item => item.id === idMenu);
 
     function handleSubmitConfigMenu(data: ConfigProps) {
         console.log(data);

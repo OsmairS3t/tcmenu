@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FlatList } from 'react-native';
-import { IngredientProps } from '../../../screens/menu/Ingredient';
-import { ingredient } from '../../../utils/data';
+import { IIngredient } from '../../../utils/interface';
 import { Header } from '../../Header';
 import { HeaderPage } from '../../HeaderPage';
 import { ButtonSend } from '../Button';
@@ -12,20 +11,16 @@ import {
 } from './styles';
 
 export interface Props {
-    ingredient: IngredientProps;
+    ingredients: IIngredient[];
     closeListIngredient: () => void;
-    setIngredient: (ingredient:IngredientProps) => void;
 }
 
-export function SelectIngredient({closeListIngredient, setIngredient}: Props) {
-    const [selectedIngredient, setSelectedIngredient] = useState(false);
-
+export function SelectIngredient({ ingredients, closeListIngredient }: Props) {
+    const [ingredient, setIngredient] = useState<IIngredient>();
+    
     function handleCloseIngredientSelect() {
+        console.log(ingredients)
         closeListIngredient();
-    }
-    function handleIngredientSelect(id: string) {
-        console.log(id);
-        setSelectedIngredient(!selectedIngredient);
     }
 
     return (
@@ -34,15 +29,18 @@ export function SelectIngredient({closeListIngredient, setIngredient}: Props) {
 
             <HeaderPage titlePage='Selecionar Ingredientes:' />
             <FlatList
-                data={ingredient}
-                style={{width: 410, paddingLeft: 20, paddingRight: 20}}
+                data={ingredients}
+                style={{ width: 410, paddingLeft: 20, paddingRight: 20 }}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => (
-                    <ItemSelectIngredient ingredient={item} isSelected={selectedIngredient} onSelect={()=>handleIngredientSelect} />
+                    <ItemSelectIngredient
+                        ingredient={item}
+                        setIngredient={setIngredient}
+                    />
                 )}
             />
-            <ButtonSend title="Selecionar" width={380} 
-                onPress={()=>handleCloseIngredientSelect}
+            <ButtonSend title="Selecionar" width={380}
+                onPress={handleCloseIngredientSelect}
             />
         </Container>
     )

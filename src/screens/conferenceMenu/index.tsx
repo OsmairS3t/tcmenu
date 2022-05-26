@@ -3,7 +3,7 @@ import { FlatList, Modal } from "react-native";
 import { Header } from "../../components/Header";
 import { ItemConference } from "../../components/ItemConference";
 import { ConfigMenu } from "./ConfigMenu";
-import { ingredient } from '../../utils/data';
+import { listingredient } from '../../utils/data';
 
 import {
     Container,
@@ -27,7 +27,7 @@ export function ConferenceMenu() {
             <Header title="Conferência do Menu" />
 
             <FlatList 
-                data={ingredient}
+                data={listingredient}
                 style={{ paddingHorizontal:20, width: '100%' }}
                 keyExtractor={item => item.id}
                 renderItem={({item, index}) => (

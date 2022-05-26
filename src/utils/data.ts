@@ -1,4 +1,4 @@
-export const category = [
+export const listcategory = [
     {id: 'ab1', name: 'Crepe'},
     {id: 'ab2', name: 'Prato'},
     {id: 'ab3', name: 'Sobremesa'},
@@ -8,7 +8,7 @@ export const category = [
     {id: 'ab7', name: 'Vinho'},
 ]
 
-export const menu = [
+export const listmenu = [
     {
       id: '1',
       category: 'ab1',
@@ -40,12 +40,12 @@ export const menu = [
     },
 ]
 
-export const ingredient = [
-    {id: 'a', name: 'Farinha de Trigo', unit: 'quilos',price: 5, amountstock: 10, amountnecessary: 10},
-    {id: 'b', name: 'Leite', price: 5, unit: 'litros',amountstock: 10, amountnecessary: 10},
-    {id: 'c', name: 'Ovos', price: 5, unit: 'unidades',amountstock: 10, amountnecessary: 10},
-    {id: 'd', name: 'Óleo', price: 10, unit: 'litros',amountstock: 10, amountnecessary: 20},
-    {id: 'e', name: 'Batata', price: 120, unit: 'kg',amountstock: 2, amountnecessary: 1},
+export const listingredient = [
+    {id: 'a', name: 'Farinha de Trigo', unit: 'quilos',price: 5, amountstock: 10, amountnecessary: 10, isnecessary: false},
+    {id: 'b', name: 'Leite', price: 5, unit: 'litros',amountstock: 10, amountnecessary: 10, isnecessary: false},
+    {id: 'c', name: 'Ovos', price: 5, unit: 'unidades',amountstock: 10, amountnecessary: 10, isnecessary: false},
+    {id: 'd', name: 'Óleo', price: 10, unit: 'litros',amountstock: 10, amountnecessary: 20, isnecessary: false},
+    {id: 'e', name: 'Batata', price: 120, unit: 'kg',amountstock: 2, amountnecessary: 1, isnecessary: false},
 ]
 
 /* Embalagem p/ Crepe

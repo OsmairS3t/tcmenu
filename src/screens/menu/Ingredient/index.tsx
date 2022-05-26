@@ -13,6 +13,8 @@ import { InputForm } from '../../../components/Form/InputForm';
 import { ButtonSend } from '../../../components/Form/Button';
 import { Header } from '../../../components/Header';
 
+import { IIngredient } from '../../../utils/interface';
+
 import { Fields, Field, Form } from '../register/styles';
 import { Container } from './styles';
 import { Alert } from 'react-native';
@@ -22,26 +24,17 @@ interface Props {
     CloseModal: () => void;
 }
 
-export interface IngredientProps {
-    id: string;
-    name: string;
-    price: number;
-    unit: string;
-    amountstock: number;
-    amountnecessary: number;
-}
-
 const schema = Yup.object().shape({
     name: Yup.string().required('O nome do ingrediente é necessário'),
     amountstock: Yup.number().required('A quantidade é necessária.')
 });
 
 export function Ingredient({ isOpen, CloseModal }: Props) {
-    const { handleSubmit, control, reset, formState: { errors } } = useForm<IngredientProps>({
+    const { handleSubmit, control, reset, formState: { errors } } = useForm<IIngredient>({
         resolver: yupResolver(schema)
     });
 
-    async function handleSubmitAddIngredient(dataForm: IngredientProps) {
+    async function handleSubmitAddIngredient(dataForm: IIngredient) {
         const dataIngredient = {
             id: uuid.v4(),
             name: dataForm.name,

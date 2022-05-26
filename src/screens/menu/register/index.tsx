@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { TouchableWithoutFeedback, Keyboard, Modal } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import { Header } from "../../../components/Header";
@@ -21,18 +21,14 @@ import {
 } from './styles';
 import { Photo } from "../../../components/Form/Photo";
 
+import { listingredient } from '../../../utils/data';
+
 import { Ingredient } from '../../../screens/menu/Ingredient'
-import { IngredientProps } from '../Ingredient'
+import { IIngredient } from '../../../utils/interface';
 import { SelectIngredient } from "../../../components/Form/SelectIngredient";
 import { SelectIngredientButton } from "../../../components/Form/SelectIngredientButton";
 
-interface MenuProps {
-    name: string;
-    price: number;
-    timeprepare: string;
-    peopleamount: number;
-    ingredients: IngredientProps[];
-}
+import { IMenu } from '../../../utils/interface';
 
 interface Props {
     isOpen: boolean;
@@ -49,15 +45,13 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
     const [isOpenModalAddIngredient, setIsOpenModalAddIngredient] = useState(false);
     const [isOpenModalListIngredient, setIsOpenModalListIngredient] = useState(false);
     const [image, setImage] = useState('');
-    const [ingredient, setIngredient] = useState({
-        id: '', name: '', unit: '',price: 0, amountstock: 0, amountnecessary: 0
-    })
+    const [ingredients, setIngredients] = useState<IIngredient[]>(listingredient);
     const { handleSubmit, control, formState: { errors } 
-        } = useForm<MenuProps>({
+        } = useForm<IMenu>({
             resolver: yupResolver(schema)
         });
 
-    function handleSubmitRegisterMenu(menu: MenuProps) {
+    function handleSubmitRegisterMenu(menu: IMenu) {
         console.log(menu);
     }
 
@@ -170,8 +164,7 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
 
                 <Modal visible={isOpenModalListIngredient}>
                     <SelectIngredient 
-                        ingredient={ingredient}
-                        setIngredient={setIngredient}
+                        ingredients={ingredients}
                         closeListIngredient={handleCloseModalListIngredient}
                     />
                 </Modal>

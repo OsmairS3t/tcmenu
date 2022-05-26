@@ -4,7 +4,7 @@ import { Header } from "../../components/Header";
 import { RegisterMenu } from './register'
 import { HeaderPage } from "../../components/HeaderPage";
 
-import { menu } from '../../utils/data';
+import { listmenu } from '../../utils/data';
 
 import {
     Container,
@@ -12,10 +12,6 @@ import {
     TextListMenu 
 } from './styles';
 
-interface MenuProps {
-    id: string;
-    name: string;
-}
 
 export function Menu() {
     const [isOpenModal, setIsOpenModal] = useState(false);
@@ -44,7 +40,7 @@ export function Menu() {
             />
             
             <FlatList 
-                data={menu}
+                data={listmenu}
                 style={{ paddingHorizontal:20, width: '100%' }}
                 keyExtractor={item => item.id}
                 renderItem={({item, index}) => (

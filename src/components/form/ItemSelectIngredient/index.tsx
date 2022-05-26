@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { IngredientProps } from '../../../screens/menu/Ingredient';
+import { IIngredient } from '../../../utils/interface';
 
 import {
     Container,
@@ -8,16 +8,38 @@ import {
 } from './styles';
 
 interface Props{
-    isSelected: boolean;
-    onSelect: () => void;
-    ingredient: IngredientProps;
+    ingredient: IIngredient;
+    setIngredient: (ingredient: IIngredient) => void;
 }
 
-export function ItemSelectIngredient({ isSelected, onSelect, ingredient }:Props){
+export function ItemSelectIngredient({ setIngredient, ingredient }:Props){
+    const [ingred, setIngred] = useState(ingredient);
+    const [selected, setSelected] = useState(ingredient.isnecessary);
+
+    function handleSelectIngredientList(ingredient: IIngredient) {
+        (ingred.isnecessary) ? setSelected(false) : setSelected(true);
+        const ingredientTemp = {
+            id: ingredient.id,
+            name: ingredient.name,
+            price: ingredient.price, 
+            unit: ingredient.unit,
+            amountstock: ingredient.amountstock, 
+            amountnecessary: ingredient.amountnecessary, 
+            isnecessary: selected
+        }
+        setIngred(ingredientTemp);
+        console.log(ingredient)
+    }
+
     return (
-        <Container onPress={onSelect}>
-            {isSelected ? <Icon size={30} name="check-square" /> : <Icon size={30} name="square" /> }
-            <IngedientName isSelected={isSelected}>{ingredient.name}</IngedientName>
+        <Container onPress={() => handleSelectIngredientList(ingred)}>
+            { selected ? 
+                <Icon size={30} name="check-square" /> : 
+                <Icon size={30} name="square" /> 
+            }
+            <IngedientName isSelected={selected}>
+                {ingred.name}
+            </IngedientName>
         </Container>
     )
 }
