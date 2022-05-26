@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { TouchableWithoutFeedback, Keyboard, Modal } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import { Header } from "../../../components/Header";
@@ -46,6 +46,7 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
     const [isOpenModalListIngredient, setIsOpenModalListIngredient] = useState(false);
     const [image, setImage] = useState('');
     const [ingredients, setIngredients] = useState<IIngredient[]>(listingredient);
+    const [selectedIngredients, setSelectedIngredients] = useState<IIngredient[]>([]);
     const { handleSubmit, control, formState: { errors } 
         } = useForm<IMenu>({
             resolver: yupResolver(schema)
@@ -82,6 +83,7 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
 
     function handleCloseModalListIngredient() {
         setIsOpenModalListIngredient(false);
+        console.log(selectedIngredients)
     }
 
     return (
@@ -165,6 +167,8 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
                 <Modal visible={isOpenModalListIngredient}>
                     <SelectIngredient 
                         ingredients={ingredients}
+                        selectedIngredients={selectedIngredients}
+                        setSelectedIngredients={setSelectedIngredients}
                         closeListIngredient={handleCloseModalListIngredient}
                     />
                 </Modal>

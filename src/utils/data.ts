@@ -18,10 +18,8 @@ export const listmenu = [
       timeprepare:'5 minutos', 
       peopleamount: 1, 
       ingredients: [
-        {id:'a', name: 'Farinha de Trigo'},
-        {id:'b', name: 'Ovos'},
-        {id:'c', name: 'Sal'},
-        {id:'d', name: 'Leite'}
+        {id: 'a', name: 'Farinha de Trigo', unit: 'quilos',price: 5, amountstock: 10, amountnecessary: 10, isnecessary: false},
+        {id: 'b', name: 'Leite', price: 5, unit: 'litros',amountstock: 10, amountnecessary: 10, isnecessary: false},
       ]
     },
     {
@@ -33,9 +31,9 @@ export const listmenu = [
       timeprepare:'5 minutos', 
       peopleamount: 1, 
       ingredients: [
-        {id:'e', name: 'Batata'},
-        {id:'f', name: 'Óleo'},
-        {id:'g', name: 'Sal'}
+        {id: 'e', name: 'Batata', price: 120, unit: 'kg',amountstock: 2, amountnecessary: 1, isnecessary: false},
+        {id: 'c', name: 'Ovos', price: 5, unit: 'unidades',amountstock: 10, amountnecessary: 10, isnecessary: false},
+        {id: 'd', name: 'Óleo', price: 10, unit: 'litros',amountstock: 10, amountnecessary: 20, isnecessary: false},
       ]
     },
 ]
@@ -46,6 +44,7 @@ export const listingredient = [
     {id: 'c', name: 'Ovos', price: 5, unit: 'unidades',amountstock: 10, amountnecessary: 10, isnecessary: false},
     {id: 'd', name: 'Óleo', price: 10, unit: 'litros',amountstock: 10, amountnecessary: 20, isnecessary: false},
     {id: 'e', name: 'Batata', price: 120, unit: 'kg',amountstock: 2, amountnecessary: 1, isnecessary: false},
+    {id: 'f', name: 'Sal', price: 10, unit: 'kg',amountstock: 1, amountnecessary: 1, isnecessary: false},
 ]
 
 /* Embalagem p/ Crepe

@@ -9,36 +9,25 @@ import {
 
 interface Props{
     ingredient: IIngredient;
-    setIngredient: (ingredient: IIngredient) => void;
+    selected: string[];
 }
 
-export function ItemSelectIngredient({ setIngredient, ingredient }:Props){
-    const [ingred, setIngred] = useState(ingredient);
-    const [selected, setSelected] = useState(ingredient.isnecessary);
+export function ItemSelectIngredient({ ingredient, selected }:Props){
+    const [isClicked, setIsClicked] = useState(false);
 
-    function handleSelectIngredientList(ingredient: IIngredient) {
-        (ingred.isnecessary) ? setSelected(false) : setSelected(true);
-        const ingredientTemp = {
-            id: ingredient.id,
-            name: ingredient.name,
-            price: ingredient.price, 
-            unit: ingredient.unit,
-            amountstock: ingredient.amountstock, 
-            amountnecessary: ingredient.amountnecessary, 
-            isnecessary: selected
-        }
-        setIngred(ingredientTemp);
-        console.log(ingredient)
+    function handleSelectIngredientList(id: string) {
+        setIsClicked(!isClicked);
+        selected.push(id);
     }
 
     return (
-        <Container onPress={() => handleSelectIngredientList(ingred)}>
-            { selected ? 
+        <Container onPress={() => handleSelectIngredientList(ingredient.id)}>
+            { isClicked ? 
                 <Icon size={30} name="check-square" /> : 
                 <Icon size={30} name="square" /> 
             }
-            <IngedientName isSelected={selected}>
-                {ingred.name}
+            <IngedientName isSelected={isClicked}>
+                {ingredient.name}
             </IngedientName>
         </Container>
     )
