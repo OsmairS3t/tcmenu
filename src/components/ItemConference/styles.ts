@@ -6,6 +6,7 @@ import { Feather } from '@expo/vector-icons';
 interface Props{
     amountNecessary: number;
     amountStock: number;
+    isNecessary: boolean;
 }
 
 export const Container = styled.View<Props>`
@@ -15,7 +16,7 @@ export const Container = styled.View<Props>`
     border-bottom-width: 2px;
     border-style: solid;
     border-color: ${({ theme }) => theme.colors.background};
-    background-color: ${({ theme, amountNecessary, amountStock }) => 
+    background-color: ${({ theme, amountStock, amountNecessary, isNecessary }) => 
         (amountStock >= amountNecessary) ? 
           theme.colors.backgroundSuccess : 
           theme.colors.backgroundAttention};

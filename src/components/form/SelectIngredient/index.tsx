@@ -10,26 +10,20 @@ import { Container } from './styles';
 
 export interface Props {
     ingredients: IIngredient[];
-    selectedIngredients: IIngredient[];
     setSelectedIngredients: (intredients: IIngredient[]) => void;
     closeListIngredient: () => void;
 }
 
-export function SelectIngredient({ ingredients, selectedIngredients, setSelectedIngredients, closeListIngredient }: Props) {
+export function SelectIngredient({ ingredients, setSelectedIngredients, closeListIngredient }: Props) {
     const [selIngre, setSelIngred] = useState<IIngredient[]>([]);
     const arrSelected: string[] = [];
 
     function submitSelectedIngredients() {
-        
+        let response:IIngredient[] = []
         arrSelected.map((idIng) => {
-            let itemIngredient:IIngredient = ingredients.filter((ing) => ing.id === idIng)
-            setSelIngred([
-                itemIngredient,
-                ...selIngre
-            ])
+            response = ingredients.filter((ing) => ing.id === idIng)
         })
-        console.log(selIngre)
-        
+        setSelectedIngredients(response);
         closeListIngredient();
     }
     

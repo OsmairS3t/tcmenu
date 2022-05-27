@@ -3,6 +3,7 @@ import { FlatList, Modal } from "react-native";
 import { Header } from "../../components/Header";
 import { ItemConference } from "../../components/ItemConference";
 import { ConfigMenu } from "./ConfigMenu";
+
 import { listingredient } from '../../utils/data';
 
 import {
@@ -32,9 +33,7 @@ export function ConferenceMenu() {
                 keyExtractor={item => item.id}
                 renderItem={({item, index}) => (
                     <ItemConference 
-                        itemName={item.name}
-                        amountNecessary={item.amountstock}
-                        amountStock={item.amountnecessary}
+                        itemIngredient={item}
                         onPress={() => handleEditItem(item.id)}
                     />
                 )}

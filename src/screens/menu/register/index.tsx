@@ -167,7 +167,6 @@ export function RegisterMenu({ isOpen, CloseModal }: Props) {
                 <Modal visible={isOpenModalListIngredient}>
                     <SelectIngredient 
                         ingredients={ingredients}
-                        selectedIngredients={selectedIngredients}
                         setSelectedIngredients={setSelectedIngredients}
                         closeListIngredient={handleCloseModalListIngredient}
                     />

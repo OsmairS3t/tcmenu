@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IIngredient } from '../../utils/interface';
 
 import {
     Container,
@@ -13,29 +14,45 @@ import {
 } from './styles';
 
 interface Props{
-    itemName: string;
-    amountNecessary: number;
-    amountStock: number;
+    itemIngredient: IIngredient;
     onPress: () => void;
 }
 
-export function ItemConference({itemName, amountNecessary, amountStock, onPress}: Props) {
-    const [amountS, setAmountS] = useState(amountStock);
+export function ItemConference({itemIngredient, onPress}: Props) {
+    const [amountS, setAmountS] = useState(itemIngredient.amountstock);
+    const [statusNecessary, setStatusNecessary] = useState(itemIngredient.isnecessary);
 
     function handleSetPlusAmountStock(valueAmount: number) {
-        setAmountS(++valueAmount);
+        const val = valueAmount + 1;
+        setAmountS(val);
+        console.log(val)
+        if (itemIngredient.amountstock < itemIngredient.amountnecessary) {
+            setStatusNecessary(true);
+        } else {
+            setStatusNecessary(false);
+        }
+        itemIngredient.isnecessary = statusNecessary;
+        console.log("mais: "+statusNecessary)
     }
 
     function handleSetMinusAmountStock(valueAmount: number) {
-        setAmountS(--valueAmount);
+        const val = valueAmount - 1;
+        setAmountS(val);
+        if (itemIngredient.amountstock < itemIngredient.amountnecessary) {
+            setStatusNecessary(true);
+        } else {
+            setStatusNecessary(false);
+        }
+        itemIngredient.isnecessary = statusNecessary;
+        console.log("menos: "+statusNecessary)
     }
 
     return (
-        <Container amountNecessary={amountNecessary} amountStock={amountS}>
-            <Title>{itemName}</Title>
+        <Container amountNecessary={itemIngredient.amountnecessary} amountStock={amountS} isNecessary={itemIngredient.isnecessary}>
+            <Title>{itemIngredient.name}</Title>
             <GroupButtonStatus>
                 <ButtonIdeal onPress={onPress}>
-                    <DescriptionAmount>Ideal: { amountNecessary }</DescriptionAmount>
+                    <DescriptionAmount>Ideal: { itemIngredient.amountnecessary }</DescriptionAmount>
                 </ButtonIdeal>
                 <ButtonsAction>
                     <DescriptionAmount>Total: { amountS }</DescriptionAmount>
